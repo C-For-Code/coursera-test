@@ -1,0 +1,146 @@
+.d-block .d-sm-none{
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+ 
+  }
+   .text-center{
+   	text-align: center;
+   }
+
+}/*End*/
+
+
+#header-nav{
+	background-color: #D8BFD8;
+	border: 2px solid #4B0082;
+	margin-left: 1px;
+	margin-right: 1px; 
+	color: #4B0082 ;
+}
+#title_primary{
+	
+	font-weight: bold;
+	color: 	#4B0082;
+	text-shadow: 2px 2px #FF0000;
+}
+
+
+
+/*Nach button menü zeigen*/
+{
+
+}
+#menuContent {
+	text-align: center;
+	font-weight: bold;
+	font-style: italic;
+}
+#menuContent li:hover{
+	background-color: #663399;
+}
+.li-area{
+	color:#4B0082;
+	font-weight: bold;
+	
+}
+/*Ende button menü zeigen*/
+.menu-item-text{
+	background-color: #D8BFD8;
+	border: 2px solid #E6E6FA;
+	margin: 0 auto 15px;
+}
+
+.menu-item-text p{
+	text-align: justify
+}
+#main-content{
+	margin-top: 20px;
+
+}
+.row{
+	margin-top: 20px;
+
+}
+.menu-item-text{
+	font-size: 1em;
+	color: #4B0082;
+	font-style: italic;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+
+
+}
+.menu-item-description p{
+	border: 2px solid #E6E6FA;
+}
+.menu-item-title{
+	background-color: #D8BFD8;
+	font-size: 1.5em;
+	color: #4B0082;
+	margin-bottom: 0;
+	text-align: center;
+	font-weight: bold;
+}
+.dropdown-item{
+	background-color: #E6E6FA;
+	width: 550px;
+}
+.menu-item-text-ddn{
+	background-color: #D8BFD8;
+	border: 2px solid #E6E6FA;
+	margin: 0 auto 15px;
+	hyphens: auto; 
+	width: 550px;
+}
+#p1, #p2, #p3{
+	width: 520px;
+	font-size: 1.2em;
+	width:550px;
+}
+
+.menu-categories-tile {
+color: #4B0082;
+font-weight: bold;
+font-size: 1.8em;
+font-style: italic;
+}
+#menu-select{
+	background-color: #D8BFD8;
+	border: 1px solid #4B0082;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+body{
+	background-color: #E6E6FA;
+}
+#toggler-button {
+	border: 1px solid #4B0082;
+	background-color: #E6E6FA;
+}
+.dropdown button{
+	background-color: #D8BFD8;
+	color:#4B0082;
+	font-weight: bold;
+	font-style: italic;
+	border: 1px solid #4B0082;
+	width: 100% !important;
+}
+.dropdown button:hover{
+	background-color: #663399;
+}
+/*Footer area */
+footer {
+	position: relative;
+	
+	margin-bottom: 20%;
+}
