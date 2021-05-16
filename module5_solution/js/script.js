@@ -60,13 +60,13 @@ var switchMenuToActive = function () {
   }
 };
 
-//STEP 1
+
 // On page load (before images or CSS)
 document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  ["<img src='images/ajax-loader.gif'></div>"], 
+  ["<img src='images/ajax-loader.gif'></div>"], //STEP 1
   true); 
 });
 
@@ -75,17 +75,24 @@ $ajaxUtils.sendGetRequest(
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
 
-    		
   // Load home snippet page
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
     function (homeHtml) {
 
-document.querySelector("#main-content").innerHTML = homeHtml;
-   
+      // STEP 2  call chooseRandomCategory function
+       var chosenCategoryShortName = chooseRandomCategory(categories).short_name; 
+
+      //STEP 3 Using existing insertProperty 
+       chosenCategoryShortName= "'" + chosenCategoryShortName + "'";
+       var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", chosenCategoryShortName);
+
+
+      //STEP 4 Using the existing insertHtml
+     insertHtml("#main-content", homeHtmlToInsertIntoMainPage);      
+
     },
-    false); 
-  
+    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
 
 // Given array of category objects, returns a random category object.
@@ -99,17 +106,6 @@ function chooseRandomCategory (categories) {
 
 
 }
-
-/*var api = "https://davids-restaurant.herokuapp.com/categories.json";
-$.getJSON( api, {
-  format: "json"
-}).done(function( data ) {
-	var obj = data.object;
-	
-  window.alert("Data "+obj);
-});*/
-
-
 
 
 // Load the menu categories view
