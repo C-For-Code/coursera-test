@@ -66,36 +66,38 @@ document.addEventListener("DOMContentLoaded", function (event) {
 showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
-  ["<img src='images/ajax-loader.gif'></div>"], //STEP 1
+  buildAndShowHomeHTML, //STEP 1
   true); 
 });
 
 
+//STEP 2 3 4
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
-  
+
   // Load home snippet page
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
-    function (homeHtmlUrl) {
+    function (homeHtml) {
 
-        var chosenCategoryShortName  = chooseRandomCategory(categories).short_name;
+      // STEP 2  call chooseRandomCategory function
+       var chosenCategoryShortName = chooseRandomCategory(categories).short_name; 
+        
+       console.log("Shortname of the Categorie "+ chosenCategoryShortName);
+  
+      //STEP 3 Using existing insertProperty 
       
-        console.log("shortname " + chosenCategoryShortName );
-       
-        $ajaxUtils.sendGetRequest(
-        categoryHtml,
-        function (homeHtml) {
-          var homeHtmlToInsertIntoMainPage  =
-            insertProperty(homeHtmlUrl, "randomCategoryShortName", "" + chosenCategoryShortName);
-          insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
-        },
-        false);
-            },
-       
+      var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'" + chosenCategoryShortName + "'");
+      
+
+      //STEP 4 Using the existing insertHtml
+     insertHtml("#main-content", homeHtmlToInsertIntoMainPage);      
+
+    },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
+
 
 // Given array of category objects, returns a random category object.
 function chooseRandomCategory (categories) {
