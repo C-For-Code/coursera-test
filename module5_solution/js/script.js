@@ -70,29 +70,30 @@ $ajaxUtils.sendGetRequest(
   true); 
 });
 
-//STEP 2 3 4
+
 // Builds HTML for the home page based on categories array
 // returned from the server.
 function buildAndShowHomeHTML (categories) {
-
+  
   // Load home snippet page
   $ajaxUtils.sendGetRequest(
     homeHtmlUrl,
-    function (homeHtml) {
+    function (homeHtmlUrl) {
 
-      // STEP 2  call chooseRandomCategory function
-       var chosenCategoryShortName = chooseRandomCategory(categories).short_name; 
-
-      //STEP 3 Using existing insertProperty 
+        var chosenCategoryShortName  = chooseRandomCategory(categories).short_name;
       
-           var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml, "randomCategoryShortName", "'" + chosenCategoryShortName + "'");
-      
-
-
-      //STEP 4 Using the existing insertHtml
-     insertHtml("#main-content", homeHtmlToInsertIntoMainPage);      
-
-    },
+        console.log("shortname " + chosenCategoryShortName );
+       
+        $ajaxUtils.sendGetRequest(
+        categoryHtml,
+        function (homeHtml) {
+          var homeHtmlToInsertIntoMainPage  =
+            insertProperty(homeHtmlUrl, "randomCategoryShortName", "" + chosenCategoryShortName);
+          insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
+        },
+        false);
+            },
+       
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
 
